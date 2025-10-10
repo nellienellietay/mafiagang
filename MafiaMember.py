@@ -1,4 +1,4 @@
-class MafiaMember: #abstract class
+class MafiaMember(ABC): #abstract class
 
 
     def __init__(self, name: str, age: int, loyalty: int):
