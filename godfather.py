@@ -1,5 +1,5 @@
 class Godfather():
-    def __init__(self, capos: list, consigliere, reports_log: list)
+    def __init__(self, capos: list, consigliere, reports_log: list):
         self.__self = self
         self.__capos = capos 
         self.__list = list
