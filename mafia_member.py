@@ -1,3 +1,7 @@
+
+from abc import ABC, abstractmethod
+
+
 class MafiaMember(ABC): #abstract class
 
 
@@ -5,19 +9,22 @@ class MafiaMember(ABC): #abstract class
         self._name = name
         self._age = age
         self._loyalty = loyalty
-        pass
+
 
     def get_name(self) -> str:
-        pass
+        return self._name
 
     def set_name(self, name: str) -> None:
-        pass
+        self._name = str(name)
 
     def get_age(self) -> int:
-        pass
+        return self._age
 
     def set_age(self, age: int) -> None:
-        pass
+        age = int(age)
+        if age < 0:
+            raise ValueError("unvalid age")
+        self._age = age
 
     def get_loyalty(self) -> int:
         pass
@@ -26,7 +33,7 @@ class MafiaMember(ABC): #abstract class
         pass
 
     @abstractmethod
-    def commit_crime(self, crime: Crime) -> None:
+    def commit_crime(self, crime: "Crime") -> None:
         pass
     
     @abstractmethod
