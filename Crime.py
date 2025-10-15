@@ -1,16 +1,23 @@
+from enum import Enum #Enum enables the creation of certain chosen values something can have. A list of approved constants
+
+#A helpclass that defines and stores our crime-types
+class CrimeTye(Enum):
+    RACKETEERING = "Racketeering"
+    EXTORTION = "Extortion"
+    BRIBERY = "Bribery"
+    SMUGGLING = "Smuggling"
+    INTIMIDATION = "Intimidation"
+
 class Crime:
+    def __init__(self, crime_type: Crimetype, str, target: str, amount: float, location: str, participants: list[str]): 
+        self.__type =  crime_type
+        self.__target = target
+        self.__amount = amount 
+        self.__location = location
+        self.__participants = participants
 
-    def __init__(self, crime_type: str, target: str, profit: float): #
-        self._crime_type = crime_type
-        self._target = target
-        self._profit = profit
-        self._assigned_member: Optional['MafiaMember'] = None
-
-    def assign_member(self, member: 'MafiaMember') -> None:
-        pass
-
-    def get_type(self) -> str:
-        pass
+    def get_type(self) -> CrimeType:
+        return self.__type
 
     def set_type(self, crime_type) -> str:
         pass
