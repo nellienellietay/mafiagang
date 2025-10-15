@@ -19,20 +19,17 @@ class Crime:
     def get_type(self) -> CrimeType:
         return self.__type
 
-    def set_type(self, crime_type) -> str:
-        pass
-
     def get_target(self) -> str:
-        pass
+        return self.__target
 
-    def set_target(self, target: str) -> None:
-        pass
+    def get_amout(self) -> float:
+        return self.__amount
+    
+    def get_location(self) -> str:
+        return self.__location
+    
+    def get_participants(self) -> list[str]:
+        return self.__participants
 
-    def set_target(self, target: str) -> None:
-        pass
-
-    def set_profit(self, profit: float) -> None:
-        pass
-
-    def describe(self) -> str:
-        pass
+    def __str__(self) -> str:
+        return f"a string"
