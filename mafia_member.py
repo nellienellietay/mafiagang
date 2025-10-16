@@ -43,7 +43,7 @@ class MafiaMember(ABC): #abstract class
 
     @abstractmethod
     def commit_crime(self, crime: Crime) -> None:
-        
+        pass
     
     @abstractmethod
     def describe(self) -> str:
