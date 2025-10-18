@@ -1,3 +1,8 @@
+from mafia_member import MafiaMember
+from Crime import Crime
+from soldier import Soldier
+
+
 class Capo():
     def __init__(self, id: str, type: str, target: str, amount: float, assigned_to: list, location: str):
         self.__id = id
@@ -6,24 +11,14 @@ class Capo():
         self.__amount = amount
         self.__assigned_to = assigned_to
         self.__location = location 
+    
+    def assign(self, crime: Crime, soldier: Soldier) -> None:
+        if soldier not in self._Capo__soldiers:
+            raise ValueError(f"{to.get_name()} is not in {self.get_name()}'s crew")
+        to.commit_crime(crime)
 
-    def get_type():
-        pass
-
-    def get_target():
-        pass
-
-    def get_amount():
-        pass
-
-    def get_location():
-        pass
-
-    def get_participanst():
-        pass
-
-    def describe():
-        pass
-
-    def __str__():
-        pass
+    def commit_crime(self, crime: Crime) -> None:
+        pass # should capo directly commit crime?
+    
+    def __str__(self) -> str:
+        return f"Crime(name={self.name})"
