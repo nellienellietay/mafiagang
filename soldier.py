@@ -1,3 +1,7 @@
+from mafia_member import MafiaMember
+from crime import Crime
+
+
 class Soldier():
     def __init__(self, skills: str):
         self.__self = self
