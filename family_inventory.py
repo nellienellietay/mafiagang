@@ -1,4 +1,3 @@
-
 from member_factory import MemberFactory
 
 class Family_Inventory:
