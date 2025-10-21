@@ -1,5 +1,5 @@
 from mafia_member import MafiaMember
-from Crime import Crime
+from Crime import Crime, CrimeType
 from soldier import Soldier
 
 
@@ -18,7 +18,9 @@ class Capo():
         to.commit_crime(crime)
 
     def commit_crime(self, crime: Crime) -> None:
-        pass # should capo directly commit crime?
+        #får orders från godfather och fördelar till rätt soldat.
+        #tror han borde kunna utföra brott också i nödfall...
+        pass 
     
     def __str__(self) -> str:
         return f"Crime(name={self.name})"

@@ -13,6 +13,7 @@ class Godfather():
         pass
 
     def commit_crime():
+        #godkänner brottet, gör det aldrig själv 
         pass
 
     def describe():

@@ -1,7 +1,7 @@
 from enum import Enum #Enum enables the creation of certain chosen values something can have. A list of approved constants
 
 #A helpclass that defines and stores our crime-types
-class CrimeTye(Enum):
+class CrimeType(Enum):
     RACKETEERING = "Racketeering"
     EXTORTION = "Extortion"
     BRIBERY = "Bribery"
