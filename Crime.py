@@ -22,7 +22,7 @@ class Crime:
     def get_target(self) -> str:
         return self.__target
 
-    def get_amout(self) -> float:
+    def get_amount(self) -> float:
         return self.__amount
     
     def get_location(self) -> str:
