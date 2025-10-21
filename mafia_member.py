@@ -1,6 +1,5 @@
 from abc import ABC, abstractmethod
 from crime import Crime
-
 class MafiaMember(ABC): #abstract class
 
         #tagit bort alla "optional" eftersom det inte behövs när man gör type-hinting tydligen
