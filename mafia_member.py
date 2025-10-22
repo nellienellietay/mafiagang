@@ -5,7 +5,7 @@ class MafiaMember(ABC): #abstract class
         #tagit bort alla "optional" eftersom det inte behövs när man gör type-hinting tydligen
         #'MafiaMember' | None  betyder att det kan vara antingen ett instance of a class eller None
 
-    def __init__(self, name: str, age: int, loyalty: int, role: str, reports_to: 'MafiaMember' = None):
+    def __init__(self, name: str, age: int, loyalty: int, role: str, reports_to = None): # none
         self.__name = name
         self.__age = age
         self.__loyalty = loyalty
@@ -36,11 +36,11 @@ class MafiaMember(ABC): #abstract class
     def set_role(self, new_role: str) -> None:
         self.__role = new_role
 
-    def get_reports_to(self) -> 'MafiaMember'= None: 
-        # returnerar den här medlemmens chef (MafiaMember-objekt) eller None om den inte har någon chef
+    def get_reports_to(self):  # returns MafiaMember or None
         return self.__reports_to
+        # returnerar den här medlemmens chef (MafiaMember-objekt) eller None om den inte har någon chef
     
-    def set_reports_to(self, new_reports_to: 'MafiaMember') -> None:
+    def set_reports_to(self, new_reports_to) -> None:
          # sätter vem den här medlemmen rapporterar till (dvs vem som är chef)
         self.__reports_to = new_reports_to
 
