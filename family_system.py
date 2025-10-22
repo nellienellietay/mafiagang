@@ -1,5 +1,5 @@
 from member_factory import MemberFactory
-from Crime import Crime, CrimeType
+from crime import Crime, CrimeType
 from family_inventory import FamilyInventory
 
 class Familysystem():
