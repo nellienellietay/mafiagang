@@ -82,19 +82,13 @@ class FamilyInventory:
             elif role == "Capo":
                 capos.append(member) #append to capos list
             elif role == "Soldier":
-                soldiers.append(member) # append to soldiers list
+                assigned = member.get_assigned_capo() if hasattr(member, "get_assigned_capo") else None #### review get assign capo
+                assigned_member = assigned if isinstance(assigned, MafiaMember) else None
+                soldiers.append({"soldier": member, "assigned_capo": assigned_member})
                 
-        if godfather: 
-            print(f"Godfather - {godfather.get_name()}")
-            
-        if consigliere:
-            print(f"Consigliere - {consigliere.get_name()}") 
-            
-        for capo in capos:
-            print(f"Capo - {capo.get_name()}, {capo.get_crew_name()}") 
-
-        for soldier in soldiers:
-            assigned = soldier.get_assigned_capo()
-            assigned_name = assigned.get_name() if hasattr(assigned, "get_name") else str(assigned) #hasattr to avoid errors
-            print(f"soldier - {soldier.get_name()}, {assigned_name}")
-
+            return {
+                "godfather": godfather,
+                "consigliere": consigliere,
+                "capos": capos,
+                "soldiers": soldiers,
+            }
