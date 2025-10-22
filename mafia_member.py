@@ -36,7 +36,7 @@ class MafiaMember(ABC): #abstract class
     def set_role(self, new_role: str) -> None:
         self.__role = new_role
 
-    def get_reports_to(self) -> 'MafiaMember' | None: 
+    def get_reports_to(self) -> 'MafiaMember'= None: 
         # returnerar den här medlemmens chef (MafiaMember-objekt) eller None om den inte har någon chef
         return self.__reports_to
     

@@ -8,12 +8,11 @@ class Consigliere(MafiaMember):
             name: str,
             age: int,
             expertise: str = "politics",
-            loyalty: int = 100,
             reports_to: 'MafiaMember' | None = None
         ):
 
         # calls parent constructor to set shared attr
-        super().__init__(name, age, role="Consigliere", loyalty=loyalty, reports_to=reports_to)            
+        super().__init__(name, age, role="Consigliere", reports_to=reports_to)            
 
         # specific attribute for Consigliere
         self.__expertise: str = expertise
