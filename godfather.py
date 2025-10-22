@@ -12,10 +12,7 @@ class Godfather(MafiaMember):
 
     def authorize(self, crime) -> None:
         """Approve a crime and log it. Adjust rules here if you need them."""
-        entry = (
-            f"Authorized {crime.get_type().value} -> "
-            f"{crime.get_target()} at {crime.get_location()} amount {crime.get_amount()}"
-        )
+        entry = (f"Authorized {crime.get_type().value}")
         self.__reports_log.append(entry)
 
     def assign(self, crime, to: "MafiaMember") -> None:
