@@ -10,7 +10,7 @@ class Soldier(MafiaMember):
             age: int,
             skills: list[CrimeType] | None = None,
             loyalty: int = 100,
-            reports_to: 'MafiaMember' | None = None
+            reports_to: MafiaMember | None = None
         ):
         #calls the constructor of the parent class (MafiaMember) so all shared attributes
         #like name, age, role, loyalty, and reports_to are created there.
