@@ -4,9 +4,9 @@ from soldier import Soldier
 
 class Capo(MafiaMember):
     """subclass of MafiaMember representing a Capo in the mafia hierarchy."""
-    def __init__(self, name, age, loyalty=95, reports_to=None):
-        super().__init__(name=name, age=age, loyalty=loyalty, role="Capo", reports_to=reports_to)
-        self.__crew_name = (name.split()[-1] if name else "Crew")  # a safety feature, if no name given default to "Crew"
+    def __init__(self, name, age, reports_to=None):
+        super().__init__(name=name, age=age, role="Capo", reports_to=reports_to)
+        self.__crew_name = (name.split() if name else "Crew")  # a safety feature, if no name given default to "Crew"
         # crew name is basically just last name
         self.__soldiers = []  # crew list
 
