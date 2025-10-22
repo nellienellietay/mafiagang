@@ -9,7 +9,7 @@ class CrimeType(Enum):
     INTIMIDATION = "Intimidation"
 
 class Crime:
-    def __init__(self, crime_type: CrimeType, str, target: str, amount: float, location: str, participants: list[str]): 
+    def __init__(self, crime_type: CrimeType, str, participants: list[str]): 
         self.__type =  crime_type
         self.__participants = participants
 
