@@ -8,7 +8,7 @@ class Consigliere(MafiaMember):
             name: str,
             age: int,
             expertise: str = "politics",
-            reports_to: 'MafiaMember' | None = None
+            reports_to: "MafiaMember" = None
         ):
 
         # calls parent constructor to set shared attr
@@ -50,4 +50,4 @@ class Consigliere(MafiaMember):
 
     def __str__(self) -> str:
         """string description of Consigliere"""
-        return f"Consigliere {self.get_name()}, expertise in {self.__expertise}, loyalty {self.get_loyalty()}"
+        return f"Consigliere {self.get_name()}, expertise in {self.__expertise}"
