@@ -10,7 +10,7 @@ class Godfather(MafiaMember):
         self.__consigliere = None    # Consigliere or None
         self.__reports_log = []      # list of str
 
-     def authorize(self, crime) -> None:
+    def authorize(self, crime) -> None:
         """Approve a crime and log it. Adjust rules here if you need them."""
         entry = (
             f"Authorized {crime.get_type().value} -> "
