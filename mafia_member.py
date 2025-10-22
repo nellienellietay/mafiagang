@@ -5,7 +5,7 @@ class MafiaMember(ABC): #abstract class
         #tagit bort alla "optional" eftersom det inte behövs när man gör type-hinting tydligen
         #'MafiaMember' | None  betyder att det kan vara antingen ett instance of a class eller None
 
-    def __init__(self, name: str, age: int, loyalty: int, role: str, reports_to: 'MafiaMember' | None = None):
+    def __init__(self, name: str, age: int, loyalty: int, role: str, reports_to: 'MafiaMember' = None):
         self.__name = name
         self.__age = age
         self.__loyalty = loyalty
