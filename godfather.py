@@ -4,8 +4,8 @@ from capo import Capo
 
 class Godfather(MafiaMember):
     """Subklass till MafiaMember"""
-    def __init__(self, name: str, age: int, loyalty: int = 100) -> None:
-        super().__init__(name=name, age=age, loyalty=loyalty, role="Godfather", reports_to=None)
+    def __init__(self, name: str, age: int) -> None:
+        super().__init__(name=name, age=age, role="Godfather", reports_to=None)
         self.__capos = []            # list of Capo
         self.__consigliere = None    # Consigliere or None
         self.__reports_log = []      # list of str
