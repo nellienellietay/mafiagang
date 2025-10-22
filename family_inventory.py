@@ -1,14 +1,32 @@
 from mafia_member import MafiaMember
-from member_factory import MemberFactory
+from godfather import Godfather
+from consigliere import Consigliere
+from capo import Capo
+from soldier import Soldier
 
 class FamilyInventory:
     def __init__(self):  # constructor
         """ Initialize the family inventory"""
-        self.__factory = MemberFactory()
         self.__members = [] # list to hold mafia members
 
-    def add_member(self, role, **kwargs):
-        member = self.__factory.create_member(role, **kwargs) # create member using factory
+    def add_member(self, role: str, **kwargs):
+        role = (role or "").strip().lower()
+        name = kwargs["name"]
+        age = kwargs["age"]
+        reports_to = kwargs.get("reports_to")
+        skills = kwargs.get("skills")
+
+        if role == "godfather":
+            member = Godfather(name=name, age=age)
+        elif role == "consigliere":
+            member = Consigliere(name=name, age=age, reports_to=reports_to)
+        elif role == "capo":
+            member = Capo(name=name, age=age, reports_to=reports_to)
+        elif role == "soldier":
+            member = Soldier(name=name, age=age, skills=skills, reports_to=reports_to)
+        else:
+            raise ValueError(f"Unknown role: {role}")
+
         self.__members.append(member)
         print("Member added")
         return member
@@ -21,13 +39,12 @@ class FamilyInventory:
                 return
         print("Not found")
 
-    def update_member(self, old_name, new_name=None, new_age=None, new_loyalty=None): 
+    def update_member(self, old_name, new_name=None, new_age=None): 
         """ Update member details
         args:
             old_name (str): current name of the member to update
             new_name (str, optional): new name to set
             new_age (int, optional): new age to set
-            new_loyalty (int, optional): new loyalty to set
         """
         for member in self.__members:
             if member.get_name().lower() == old_name.lower():
@@ -35,8 +52,6 @@ class FamilyInventory:
                     member.set_name(new_name)
                 if new_age is not None:
                     member.set_age(new_age)
-                if new_loyalty is not None:
-                    member.set_loyalty(new_loyalty)
                 print("Member updated")
                 return
         print("Member not found")
@@ -48,7 +63,7 @@ class FamilyInventory:
         for member in self.__members:
             if keyword in member.get_name().lower(): 
                 role = member.__class__.__name__ # get role from class name
-                print(f"Role: {role} | Name: {member.get_name()} | Age: {member.get_age()} | Loyalty: {member.get_loyalty()}") 
+                print(f"Role: {role} | Name: {member.get_name()} | Age: {member.get_age()}") 
                 found = True #set found to true if match found 
         if not found:
             print("No matching member found.")
