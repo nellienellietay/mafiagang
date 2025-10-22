@@ -8,7 +8,7 @@ class Familysystem():
     def __init__(self) -> None:
         """Initialize the family system application"""
         self.__inv: FamilyInventory = FamilyInventory()
-        self.__crimes = list[Crime] = []  #type hint + create empty list
+        self.__crimes: list[Crime] = []  #type hint + create empty list
 
 # The looping menu that starts the whole application
     def menu(self) -> None:
