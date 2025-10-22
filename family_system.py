@@ -18,19 +18,19 @@ class Familysystem():
             print("1. Add member")
             print("2. List members")
             print("3. Show hierarchy")
-            print("4. Register crime") 
+            print("4. Do crime") 
             print("5. Remove member")
             print("0. Exit")
 
-            choice: str = input("Select: ").strip()
+            choice: str = input("Select: ").strip()    #get user input and remove whitespace
 
             if choice == "0":
                 print("Goodbye.")
                 break
             
             elif choice == "1":
-                name: str = input("Enter name: ").strip()
-                if not name.isalpha():
+                name: str = input("Enter name: ").strip() 
+                if not name.isalpha(): #check if name contains letters *only letters
                     print("Invalid name.")
                     continue
 
@@ -44,7 +44,7 @@ class Familysystem():
                 member: MafiaMember | None = self.__inv.add_member(role, name=name, age=age)
                 
                 if member:
-                    print(f"{member.get_name()} added as {member.__class.__name__}.")
+                    print(f"{member.get_name()} added as {member.__class__.__name__}.")
                 else:
                     print("Invalid role or creation failed.")
 
@@ -52,7 +52,7 @@ class Familysystem():
                 members: list[MafiaMember] = self.__inv.list_members()
                 if not members:
                     print("No members found.")
-                    continue
+                    continue 
                 for m in members:
                     print(f"{m.__class__.__name__}: {m.get_name()}, {m.get_age()} years old")
 
@@ -61,7 +61,7 @@ class Familysystem():
                 if not any(hierarchy.values()):
                     print("No members yet")
                     continue
-                for role, members in hierarchy.items():
+                for role, members in hierarchy.items(): #loop through the hierarchy dictionary
                     for m in members:
                         print(f"{role}: {m.get_name()}")
 
@@ -85,26 +85,26 @@ class Familysystem():
                     print(f"{i + 1}. {members[i].get_name()}")
 
                 member_choice: str = input("Select member number: ").strip()
-                if not member_choice.isdigit():
+                if not member_choice.isdigit(): #check if input is a number
                     print("Invalid choice.")
                     continue
 
-                index = int(member_choice) - 1
-                if index < 0 or index >= len(members):
+                index = int(member_choice) - 1 #adjust for 0-based index
+                if index < 0 or index >= len(members): #check valid index
                     print("Invalid member number.")
                     continue
 
                 member: MafiaMember = members[index]
 
                 crime: Crime = Crime(crime_type, [member.get_name()])
-                self.__crimes.append(crime)
+                self.__crimes.append(crime) #store the crime in the list
 
                 member.commit_crime(crime)
                 print(f"{member.get_name()} committed {crime_type.value}.")
 
             elif choice == "5":
                 name: str = input("Enter name to remove: ").strip()
-                result: str = self.__inv.remove_member(name)
+                result: str = self.__inv.remove_member(name) #remove member by name
                 print(result)
 
             else:
@@ -113,11 +113,10 @@ class Familysystem():
             #except Exception as error:  #avoid runtime errors
                 #print(f"Error: {error}") 
 
-    def run(self) -> None:
+    def run(self) -> None: 
         """Start the family system application"""
         self.menu() #starts the menu loop
 
 if __name__ == "__main__": #run ONLY if executed as the main script
     app = Familysystem() #create instance of Familysystem
     app.run()  
-
