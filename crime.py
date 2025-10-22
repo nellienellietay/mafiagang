@@ -11,22 +11,10 @@ class CrimeType(Enum):
 class Crime:
     def __init__(self, crime_type: CrimeType, str, target: str, amount: float, location: str, participants: list[str]): 
         self.__type =  crime_type
-        self.__target = target
-        self.__amount = amount 
-        self.__location = location
         self.__participants = participants
 
     def get_type(self) -> CrimeType:
         return self.__type
-
-    def get_target(self) -> str:
-        return self.__target
-
-    def get_amount(self) -> float:
-        return self.__amount
-    
-    def get_location(self) -> str:
-        return self.__location
     
     def get_participants(self) -> list[str]:
         return self.__participants
