@@ -2,17 +2,23 @@ from member_factory import MemberFactory
 from crime import Crime, CrimeType
 from family_inventory import FamilyInventory
 
+"""
+FamilySystem class: Handles the user interface and input logic for the Mafia Family program.
+Responsible for menu control, input validation and delegating tasks to other classes.
+"""
+
 class Familysystem():
+
     def __init__(self) -> None:
         """Initialize the family system application"""
-        self._inv = FamilyInventory()
-        self._factory = MemberFactory()
-        self._crimes = []  #list to hold crimes
-        self._next_crime_id = 1   # unique id for crimes
+        self.__inv = FamilyInventory()
+        self.__factory = MemberFactory()
+        self.__crimes = []  #list to hold crimes
+        self.__next_crime_id = 1   # unique id for crimes
 
 
 # The looping menu that starts the whole application
-    def menu(self) -> None:
+    def show_menu(self) -> None:
         """Display menu and handle user input"""
         while True:
             print("\n- - -The Family- - -")
@@ -21,26 +27,44 @@ class Familysystem():
             print("3. Show hierarchy")
             print("4. Register crime") 
             print("0. Exit")
-            choice: str = input("Select: ").strip() #get user input and remove whitespace
+
+    def run(self) -> None:
+        """Start familysystem"""
+        while True:
+            self.show_menu()
+            choice: str = input("Select: ").strip()
+
+            if choice not in ["0","1","2","3","4"]:
+                print("Invalid option. Please enter a number between 0-4.")
+                continue 
+
             try:
                 if choice == "1":
-                    self.add_member() 
+                    self.__add_member()   
+
                 elif choice == "2":
                     self.list_members() 
+
                 elif choice == "3":
-                    self._inv.display_member_hierarchy() # display hierarchy
-                    
-                # register crime lacks functionality in other class so creating a very basic version here    
+                    self._inv.display_member_hierarchy() 
+
                 elif choice == "4": 
-                    crime_type_input = input("Enter crime type: ").strip().lower() 
+                    crime_type_input = input("Enter crime type: Racketeering, Extortion, Bribery, Smuggling or Intimidation: ").strip().upper() 
+                    
                     if crime_type_input not in CrimeType._member_names_: # validate crime type in CrimeType class
-                        print("Invalid crime type.")
+                        print("Invalid crime type. Try again ")
                         continue
-                    elif choice == "0": 
-                        print("Bye.")
+                    
+                    print(f"Crime confirmed and ready to take place")
+                    #here we will ask for target, amount, member
+
+                elif choice == "0": 
+                    print("Bye.")
                     break
+                    
                 else:
                     print("Invalid option")
+
             except Exception as error:  #avoid runtime errors
                 print(f"Error: {error}") 
 
