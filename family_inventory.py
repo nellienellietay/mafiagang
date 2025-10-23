@@ -4,24 +4,23 @@ from consigliere import Consigliere
 from capo import Capo
 from soldier import Soldier
 
+"""This is the family invetory."""
+
 class FamilyInventory:
-    def __init__(self):  # constructor
+
+    def __init__(self): 
         """Initialize the family inventory"""
+
         self.__members = [] # list to hold mafia members
 
-    def add_member(self, role: str, **kwargs):
-        """ Add a new member to the family inventory
-        args:
-            role: Role of the member 
-            kwargs: Additional attributes depending on role
-        returns: 
-            MafiaMember
-        """
-        role = (role or "").strip().lower()
-        name = kwargs["name"]
-        age = kwargs["age"]
-        reports_to = kwargs.get("reports_to")
-        skills = kwargs.get("skills")
+    def add_member(self, role: str, name: str, age: int, reports_to=None, skills=None):
+        """ Add a new member"""
+
+        # Check if we have a Godfather already
+        if role == "godfather":
+            for member in self.__members:
+                if isinstance(member, Godfather):
+                    raise ValueError("Who are you trying to fool. There can only be one Godfather.")
 
         if role == "godfather":
             member = Godfather(name=name, age=age)
@@ -38,7 +37,6 @@ class FamilyInventory:
         return member
 
     def remove_member(self, name: str): 
-    
         """ Remove a member by name and return a message.
         Error handling is done in family_system, not here"""
         
@@ -58,7 +56,6 @@ class FamilyInventory:
         return f"No member named '{name}' found."
 
     def update_member(self, old_name, new_name=None, new_age=None): 
-
         """ Update member name and/or age:
             old_name (str): current name of the member to update
             new_name (str, optional): new name to set
