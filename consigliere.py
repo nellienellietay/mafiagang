@@ -3,14 +3,14 @@ from crime import Crime, CrimeType
 
 class Consigliere(MafiaMember):
 
-    def __init__( 
-            self,
-            name: str,
-            age: int,
-            expertise: str = "politics",
-            reports_to: "MafiaMember" = None
-        ):
-
+    def __init__(self, name: str, age: int, expertise: str = "politics", reports_to: "MafiaMember" = None):
+        """Initializes a Consigliere as instance
+        args:
+            name (str): Name of the consigliere
+            age (int): Age of the consigliere
+            expertise (str): Area of expertise for advice
+            reports_to (MafiaMember): The MafiaMember this consigliere reports to
+        """
         # calls parent constructor to set shared attr
         super().__init__(name, age, role="Consigliere", reports_to=reports_to)            
 
@@ -18,7 +18,10 @@ class Consigliere(MafiaMember):
         self.__expertise: str = expertise
 
     def commit_crime(self, crime: Crime) -> None:
-        """Consigliere involvment in the crime is by commenting on it"""
+        """Consigliere involvment in the crime is by commenting on it
+        args: 
+            crime (Crime): The crime being committed   
+        """
         crime_type = crime.get_type()
         name = self.get_name()
 
@@ -36,7 +39,10 @@ class Consigliere(MafiaMember):
             print(f"{name} calmly says: 'I have no comment on this kind of work'")
 
     def advise(self, issue: str) -> str:
-        """Gives general advice to the Godfather depending on the topic"""
+        """Gives general advice to the Godfather depending on  topic
+        returns:
+            str: advice string
+        """
         issue_lower = issue.lower()
 
         if "money" in issue_lower or "finance" in issue_lower:
