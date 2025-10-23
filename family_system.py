@@ -125,6 +125,28 @@ class FamilySystem():
 
                 print(result)
 
+            elif choice == "6":
+                old_name: str = input("Enter current name of the member: ").strip()
+
+                if not old_name:
+                    print("You must enter a name.")
+                    continue
+
+                new_name: str = input("Enter new name: ").strip()
+                new_age_input: str = input("Enter new age: ").strip()
+
+                if new_age_input:
+                    if not new_age_input.isdigit():
+                        print("Invalid age. Please enter a number.")
+                        continue
+                    new_age = int(new_age_input)
+                else:
+                    new_age = None
+
+                # Calls inventory logic 
+                result: str = self.__inv.update_member(old_name, new_name or None, new_age)
+                print(result)
+
             else:
                 print("Invalid choice. Try again.")
 
