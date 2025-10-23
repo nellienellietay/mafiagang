@@ -16,6 +16,8 @@ class FamilyInventory:
     def add_member(self, role: str, name: str, age: int, reports_to=None, skills=None):
         """ Add a new member"""
 
+        role = (role or "").strip().lower()
+
         # Check if we have a Godfather already
         if role == "godfather":
             for member in self.__members:
