@@ -46,8 +46,10 @@ class FamilyInventory:
 
         # Loops through all members 
         for member in self.__members:
+
             #  Compares the names, not taking into consideration small/big letters
             if member.get_name().lower() == name: 
+
                 # Removes member from the list 
                 self.__members.remove(member)
                 return f"Member '{member.get_name()}' removed."
@@ -65,6 +67,7 @@ class FamilyInventory:
         
         old_name = (old_name or "").strip().lower()
 
+        # Loops through all members in a list
         for member in self.__members:
             if member.get_name().lower() == old_name:
                 updated = False
@@ -81,16 +84,23 @@ class FamilyInventory:
         return f"No member named '{old_name}' found"
 
     def search_member(self, keyword):
+
         """ Search for members by keyword in their name"""
+
         keyword = (keyword or "").strip().lower()
-        found = False # search for members matching keyword
+        found_members = [] 
+
+        # Loop through all the members.
         for member in self.__members:
             if keyword in member.get_name().lower(): 
-                role = member.__class__.__name__ # get role from class name
+                found_members.append(member)
+
+        if found_members:
+            for member in found_members:
+                role = member.__class__.__name__
                 print(f"Role: {role} | Name: {member.get_name()} | Age: {member.get_age()}") 
-                found = True #set found to true if match found 
-        if not found:
-            ("No matching member found.")
+        else:
+            print("No matching member found")
 
     def list_members(self): # return list of all members
         """ List all members in the family inventory

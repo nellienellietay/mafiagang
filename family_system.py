@@ -147,6 +147,15 @@ class FamilySystem():
                 result: str = self.__inv.update_member(old_name, new_name or None, new_age)
                 print(result)
 
+            elif choice == "7":
+                keyword: str = input("Enter name or part of name to search for: ").strip()
+                if not keyword:
+                    print("You much enter something to search for.")
+                    continue
+
+                # Calls inventory-method
+                self.__inv.search_member(keyword)
+
             else:
                 print("Invalid choice. Try again.")
 
