@@ -58,6 +58,38 @@ class FamilySystem():
                 
                 except ValueError as e:
                     print(e)
+                    continue
+                     if role == "Soldier" and hasattr(member, "add_skill"):
+                    print("Assign skills to this Soldier by name (comma separated).")
+                    print("Available: " + ", ".join(ct.value for ct in CrimeType))
+
+                    raw = input("Enter skills (e.g. Bribery, Smuggling): ").strip()
+                    if not raw:
+                        print("No skills assigned.")
+                        continue
+
+             entries = [x.strip() for x in raw.split(",") if x.strip()] # split input & clean space
+                    #accepct the enum names
+                    by_value = {ct.value.lower(): ct for ct in CrimeType} #map out by value 
+                    by_name = {ct.name.lower(): ct for ct in CrimeType} # map out by name
+
+                      picked: list[CrimeType] = [] #list for the enum selected
+                    ok = True #flag for valid input
+                    for e in entries: #loop through entries
+                        k = e.lower() #lowercase matc catch
+                        if k in by_value: #calue match
+                            picked.append(by_value[k]) #append by vlue 
+                        elif k in by_name:
+                            picked.append(by_name[k]) 
+                        else:
+                            print(f"Invalid skill: {e}")
+                            ok = False # invalid
+                            break #stop loop
+
+                    if not ok or not picked:
+                        print("no skills assigned.")
+                        continue
+
 
             elif choice == "2":
                 members: list[MafiaMember] = self.__inv.list_members()
