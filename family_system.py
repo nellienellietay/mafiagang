@@ -21,6 +21,7 @@ class FamilySystem():
             print("4. Do crime") 
             print("5. Remove member")
             print("6. Update member")
+            print("7. Search member")
             print("0. Exit")
 
             choice: str = input("Select: ").strip()    #get user input and remove whitespace
