@@ -25,7 +25,7 @@ class Capo(MafiaMember):
             if crew_soldier.get_name().lower() == soldier_name.lower(): 
                 crew_soldier.commit_crime(crime) #findd soldier by name and assigns crime
                 return
-            raise ValueError(f"{soldier_name} is not in {self.get_name()}'s crew") #
+        raise ValueError(f"{soldier_name} is not in {self.get_name()}'s crew") #
     
     def commit_crime(self, crime: Crime) -> None:
         """ Capo delegates crimes to soldiers in his crew

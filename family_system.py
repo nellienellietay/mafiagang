@@ -28,11 +28,23 @@ class FamilySystem():
                 print("Goodbye.")
                 break
             
+            # Name 
             elif choice == "1":
                 name: str = input("Enter name: ").strip() 
-                if not name.isalpha(): #check if name contains letters *only letters
-                    print("Invalid name.")
+
+                if not name:
+                    print("Invalid name. You must enter something.")
                     continue
+
+                input_name = False 
+                for word in name.split():
+                    cleaned = word.replace("-", "")
+                    if not cleaned.isalpha():
+                        input_name = True
+                        break 
+                    
+                    if input_name:
+                        print("Invalid name. Please use only letters and spaces.")
 
                 age_input: str = input("Enter age: ").strip()
                 if not age_input.isdigit():

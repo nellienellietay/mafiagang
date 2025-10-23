@@ -35,7 +35,6 @@ class FamilyInventory:
             raise ValueError(f"Unknown role: {role}")
 
         self.__members.append(member)
-        print ("Member added")
         return member
 
     def remove_member(self, name): 
@@ -108,8 +107,8 @@ class FamilyInventory:
                 soldiers.append({"soldier": member, "assigned_capo": assigned_member})
                 
         return {
-                "godfather": godfather,
-                "consigliere": consigliere,
+                "godfather": [godfather] if godfather else [],
+                "consigliere": [consigliere] if consigliere else [],
                 "capos": capos,
                 "soldiers": soldiers,
             }
