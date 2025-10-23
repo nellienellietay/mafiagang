@@ -1,7 +1,6 @@
 from mafia_member import MafiaMember
 from crime import Crime, CrimeType
 
-
 class Soldier(MafiaMember):
     """Subklass till MafiaMember"""
     def __init__(
@@ -11,12 +10,15 @@ class Soldier(MafiaMember):
             skills: list[CrimeType] | None = None,
             reports_to: MafiaMember | None = None
         ):
-        #calls the constructor of the parent class (MafiaMember) so all shared attributes
-        #like name, age, role, and reports_to are created there.
+
+        """calls the constructor of the parent class (MafiaMember) so all shared attributes
+        like name, age, role, and reports_to are created there."""
         super().__init__(name, age, role="Soldier", reports_to=reports_to)
-        #creates a list for e soldiers skills (type CrimeType)
+
+        """creates a list for e soldiers skills (type CrimeType)
         #: list[CrimeType] is a type hint
-        #this list should only contain CrimEtype values and if no list is provided the soldier gets an empty list
+        #this list should only contain CrimEtype values and if no list is provided the soldier gets an empty list"""
+
         self.__skills: list[CrimeType] = skills if skills is not None else [] 
     
     def commit_crime(self, crime: Crime) -> None:
@@ -39,8 +41,8 @@ class Soldier(MafiaMember):
         # och som skriver ut olika meddelanden beroende på vilket crime 
 
         if not match_found: 
-            print(f"{self.get_name} fails to handle {crime_type.value}")
+            print(f"{self.get_name()} fails to handle {crime_type.value}")
 
     def __str__(self):
-        pass
+        return f"Soldier {self.get_name()}"
         

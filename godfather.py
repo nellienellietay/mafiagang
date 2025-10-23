@@ -26,8 +26,5 @@ class Godfather(MafiaMember):
         print(f"{self.get_name()} does not commit crimes directly.")
         self.__reports_log.append(f"Refused to commit {crime.get_type().value}")
 
-    def describe(self) -> str:
-       pass # blev osäker vad som beskrivs
-
     def __str__(self) -> str:
-        return self.describe()
+        return f"Godfather {self.get_name()}, head of the family"

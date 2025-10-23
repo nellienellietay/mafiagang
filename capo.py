@@ -21,7 +21,7 @@ class Capo(MafiaMember):
                 crime (Crime): the crime to be assigned
                 soldier_name (str): the name of the soldier to assign the crime to
         """
-        for crew_soldier in self.soldiers: #iterates through soldiers in crew
+        for crew_soldier in self.__soldiers: #iterates through soldiers in crew
             if crew_soldier.get_name().lower() == soldier_name.lower(): 
                 crew_soldier.commit_crime(crime) #findd soldier by name and assigns crime
                 return
@@ -36,7 +36,7 @@ class Capo(MafiaMember):
         #tror han borde kunna utföra brott också i nödfall... / i think he should only be able to do racketeering
         
         if crime.get_type() == CrimeType.RACKETEERING: #Capo can do racketeering 
-            print(f"{self.get_name()} performs Racketeering in {crime.get_location()}, amount {crime.get_amount()}")
+            print(f"{self.get_name()} performs Racketeering in {crime.get_type().value}")
             return
         if self.__soldiers:
             self.__soldiers[0].commit_crime(crime) #assigns to first soldier in crew for now

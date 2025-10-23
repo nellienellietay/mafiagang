@@ -3,7 +3,7 @@ from crime import Crime, CrimeType
 
 class Consigliere(MafiaMember):
 
-    def __init__(self, name: str, age: int, expertise: str = "politics", reports_to: "MafiaMember" = None):
+    def __init__(self, name: str, age: int, expertise: str = "politics", reports_to: MafiaMember = None):
         """Initializes a Consigliere as instance
         args:
             name (str): Name of the consigliere

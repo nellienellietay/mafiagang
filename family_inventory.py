@@ -109,7 +109,7 @@ class FamilyInventory:
                 assigned_member = assigned if isinstance(assigned, MafiaMember) else None
                 soldiers.append({"soldier": member, "assigned_capo": assigned_member})
                 
-            return {
+        return {
                 "godfather": godfather,
                 "consigliere": consigliere,
                 "capos": capos,

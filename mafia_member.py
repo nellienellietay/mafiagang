@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from crime import Crime
+
 class MafiaMember(ABC): #abstract class
 
         #tagit bort alla "optional" eftersom det inte behövs när man gör type-hinting tydligen
@@ -54,7 +55,6 @@ class MafiaMember(ABC): #abstract class
     
     def set_reports_to(self, new_reports_to) -> None:
         """ Sets who this member reports to"""
-         # sätter vem den här medlemmen rapporterar till (dvs vem som är chef)
         self.__reports_to = new_reports_to
 
     #abstractmethod är tomma med pass eftersom de kommer override:as i varje subclass
@@ -67,5 +67,5 @@ class MafiaMember(ABC): #abstract class
     @abstractmethod
     #ändrat från describe till str, bättre praxis, osäker om den fortfarande behöver vara abstract 
     def __str__(self) -> str:
-        """Abstract method for committing a crime"""
+        """Returns string representation, is overwritten when used in a subclass"""
         pass

@@ -2,7 +2,7 @@ from crime import Crime, CrimeType
 from family_inventory import FamilyInventory
 from mafia_member import MafiaMember
 
-class Familysystem():
+class FamilySystem():
     """Handles user interaction and connects UI to the mafia family data layer."""
 
     def __init__(self) -> None:
@@ -118,5 +118,5 @@ class Familysystem():
         self.menu() #starts the menu loop
 
 if __name__ == "__main__": #run ONLY if executed as the main script
-    app = Familysystem() #create instance of Familysystem
+    app = FamilySystem() #create instance of Familysystem
     app.run()  
