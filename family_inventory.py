@@ -35,7 +35,7 @@ class FamilyInventory:
             raise ValueError(f"Unknown role: {role}")
 
         self.__members.append(member)
-        print("Member added")
+        print ("Member added")
         return member
 
     def remove_member(self, name): 
@@ -60,9 +60,9 @@ class FamilyInventory:
                     member.set_name(new_name)
                 if new_age is not None:
                     member.set_age(new_age)
-                print("Member updated")
-                return
-        print("Member not found")
+                    return ("Member updated")
+                else:
+                    return "Member not found"
 
     def search_member(self, keyword):
         """ Search for members by keyword in their name"""
@@ -74,7 +74,7 @@ class FamilyInventory:
                 print(f"Role: {role} | Name: {member.get_name()} | Age: {member.get_age()}") 
                 found = True #set found to true if match found 
         if not found:
-            print("No matching member found.")
+            ("No matching member found.")
 
     def list_members(self): # return list of all members
         """ List all members in the family inventory
@@ -88,8 +88,7 @@ class FamilyInventory:
         1. Godfather, 2. Consigliere, 3. Capos, 4. Soldiers
         """
         if not self.__members:
-            print("No members.")
-            return
+            return("No members.")
 
         godfather = None # find and categorize members by role
         consigliere = None # 

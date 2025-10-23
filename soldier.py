@@ -7,8 +7,8 @@ class Soldier(MafiaMember):
             self,
             name: str,
             age: int,
-            skills: list[CrimeType] | None = None,
-            reports_to: MafiaMember | None = None
+            skills: list[CrimeType],
+            reports_to: MafiaMember 
         ):
 
         """calls the constructor of the parent class (MafiaMember) so all shared attributes
