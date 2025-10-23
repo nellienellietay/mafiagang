@@ -36,12 +36,14 @@ class Soldier(MafiaMember):
                 match_found = True
                 print(f"{self.get_name()} executes {crime_type.value}")
                 break
-            
-        # här kan vi lägga in roligare prints som är kopplade till olika crimetype
-        # och som skriver ut olika meddelanden beroende på vilket crime 
 
         if not match_found: 
             print(f"{self.get_name()} fails to handle {crime_type.value}")
+
+    # Ny funktion kl.23.47 
+    def get_assigned_capo(self):
+        """Return the capo this soldier reports to"""
+        return self.get_reports_to()
 
     def __str__(self):
         return f"Soldier {self.get_name()}"

@@ -32,6 +32,12 @@ class FamilyInventory:
             member = Capo(name=name, age=age, reports_to=reports_to)
         elif role == "soldier":
             member = Soldier(name=name, age=age, skills=skills, reports_to=reports_to)
+
+            # If there is a capo, assign soldier to that capo
+            for m in self.__members:
+                if isinstance(m, Capo):
+                    m.add_soldier(member)
+                    break
         else:
             raise ValueError(f"Unknown role: {role}")
 
