@@ -31,34 +31,31 @@ class FamilySystem():
             # Name 
             elif choice == "1":
                 name: str = input("Enter name: ").strip() 
-
+               
                 if not name:
                     print("Invalid name. You must enter something.")
                     continue
+                if not name.replace(" ", "").isalpha():
+                    print("Invalid name. Letters only.")
+                    continue
 
-                input_name = False 
-                for word in name.split():
-                    cleaned = word.replace("-", "")
-                    if not cleaned.isalpha():
-                        input_name = True
-                        break 
-                    
-                    if input_name:
-                        print("Invalid name. Please use only letters and spaces.")
-
+                # Age
                 age_input: str = input("Enter age: ").strip()
                 if not age_input.isdigit():
-                    print("Invalid age.")
+                    print("Invalid age. Please enter a number.")
                     continue
+
                 age: int = int(age_input)
   
+                # Member role 
                 role: str = input("Enter role (Godfather, Capo, Soldier, Consigliere): ").strip().capitalize()
-                member: MafiaMember | None = self.__inv.add_member(role, name=name, age=age)
                 
-                if member:
+                try:
+                    member = self.__inv.add_member(role, name=name, age=age)
                     print(f"{member.get_name()} added as {member.__class__.__name__}.")
-                else:
-                    print("Invalid role or creation failed.")
+                
+                except ValueError as e:
+                    print(e)
 
             elif choice == "2":
                 members: list[MafiaMember] = self.__inv.list_members()
@@ -116,14 +113,19 @@ class FamilySystem():
 
             elif choice == "5":
                 name: str = input("Enter name to remove: ").strip()
-                result: str = self.__inv.remove_member(name) #remove member by name
+
+                # Error handling
+                if not name:
+                    print("You must enter a name.")
+                    continue
+
+                # This line calls logic from inventory file
+                result: str = self.__inv.remove_member(name) 
+
                 print(result)
 
             else:
                 print("Invalid choice. Try again.")
-
-            #except Exception as error:  #avoid runtime errors
-                #print(f"Error: {error}") 
 
     def run(self) -> None: 
         """Start the family system application"""

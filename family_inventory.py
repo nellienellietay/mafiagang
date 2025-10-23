@@ -15,7 +15,7 @@ class FamilyInventory:
             role: Role of the member 
             kwargs: Additional attributes depending on role
         returns: 
-            mafiaMember
+            MafiaMember
         """
         role = (role or "").strip().lower()
         name = kwargs["name"]
@@ -37,14 +37,23 @@ class FamilyInventory:
         self.__members.append(member)
         return member
 
-    def remove_member(self, name): 
-        """ Remove a member by name"""
-        for member in self.__members: 
-            if member.get_name().lower() == name.lower(): 
+    def remove_member(self, name: str): 
+    
+        """ Remove a member by name and return a message.
+        Error handling is done in family_system, not here"""
+        
+        name = name.strip().lower()
+
+        # Loops through all members 
+        for member in self.__members:
+            #  Compares the names, not taking into consideration small/big letters
+            if member.get_name().lower() == name: 
+                # Removes member from the list 
                 self.__members.remove(member)
-                print("Member removed")
-                return
-        print("Not found")
+                return f"Member '{member.get_name()}' removed."
+            
+        # If the loops does not find a match 
+        return f"No member named '{name}' found."
 
     def update_member(self, old_name, new_name=None, new_age=None): 
         """ Update member details
