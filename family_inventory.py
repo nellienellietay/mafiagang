@@ -6,10 +6,17 @@ from soldier import Soldier
 
 class FamilyInventory:
     def __init__(self):  # constructor
-        """ Initialize the family inventory"""
+        """Initialize the family inventory"""
         self.__members = [] # list to hold mafia members
 
     def add_member(self, role: str, **kwargs):
+        """ Add a new member to the family inventory
+        args:
+            role: Role of the member 
+            kwargs: Additional attributes depending on role
+        returns: 
+            mafiaMember
+        """
         role = (role or "").strip().lower()
         name = kwargs["name"]
         age = kwargs["age"]
@@ -32,6 +39,7 @@ class FamilyInventory:
         return member
 
     def remove_member(self, name): 
+        """ Remove a member by name"""
         for member in self.__members: 
             if member.get_name().lower() == name.lower(): 
                 self.__members.remove(member)
