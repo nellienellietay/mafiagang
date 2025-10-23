@@ -56,20 +56,29 @@ class FamilyInventory:
         return f"No member named '{name}' found."
 
     def update_member(self, old_name, new_name=None, new_age=None): 
-        """ Update member details
-        args:
+
+        """ Update member name and/or age:
             old_name (str): current name of the member to update
             new_name (str, optional): new name to set
             new_age (int, optional): new age to set
         """
+        
+        old_name = (old_name or "").strip().lower()
+
         for member in self.__members:
-            if member.get_name().lower() == old_name.lower():
-                if new_name is not None: # update name if provided
-                    member.set_name(new_name)
+            if member.get_name().lower() == old_name:
+                updated = False
+
+                if new_name:
+                    member.set_name(new_name.strip())
+                    updated = True
+
                 if new_age is not None:
-                    member.set_age(new_age)
-                    return ("Member updated")
-        return "Member not found"
+                    member.set_age(int(new_age))
+
+                return ("Member updated") if updated else "No changes provided."
+        
+        return f"No member named '{old_name}' found"
 
     def search_member(self, keyword):
         """ Search for members by keyword in their name"""
