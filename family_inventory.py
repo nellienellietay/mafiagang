@@ -61,8 +61,7 @@ class FamilyInventory:
                 if new_age is not None:
                     member.set_age(new_age)
                     return ("Member updated")
-                else:
-                    return "Member not found"
+        return "Member not found"
 
     def search_member(self, keyword):
         """ Search for members by keyword in their name"""
