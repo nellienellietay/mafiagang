@@ -17,11 +17,10 @@ class FamilySystem():
             print("\n- - -The Family- - -")
             print("1. Add member")
             print("2. List members")
-            print("3. Show hierarchy")
-            print("4. Do crime") 
-            print("5. Remove member")
-            print("6. Update member")
-            print("7. Search member")
+            print("3. Do crime") 
+            print("4. Remove member")
+            print("5. Update member")
+            print("6. Search member")
             print("0. Exit")
 
             choice: str = input("Select: ").strip()    #get user input and remove whitespace
@@ -67,17 +66,9 @@ class FamilySystem():
                 for m in members:
                     print(f"{m.__class__.__name__}: {m.get_name()}, {m.get_age()} years old")
 
-            elif choice == "3":
-                hierarchy = self.__inv.display_member_hierarchy()
-                if not any(hierarchy.values()):
-                    print("No members yet")
-                    continue
-                for role, members in hierarchy.items(): #loop through the hierarchy dictionary
-                    for m in members:
-                        print(f"{role}: {m.get_name()}")
 
-            elif choice == "4":
-                print("Register a crime")
+            elif choice == "3":
+                print(" Do crime")
                 print("Available crimes: Racketeering, Extortion, Bribery, Smuggling, Intimidation")
 
                 crime_input: str = input("Enter crime type: ").strip().upper()
@@ -102,7 +93,7 @@ class FamilySystem():
 
                 index = int(member_choice) - 1 #adjust for 0-based index
                 if index < 0 or index >= len(members): #check valid index
-                    print("Invalid member number.")
+                    print("Invalid number.")
                     continue
 
                 member: MafiaMember = members[index]
@@ -113,7 +104,7 @@ class FamilySystem():
                 member.commit_crime(crime)
                 print(f"{member.get_name()} committed {crime_type.value}.")
 
-            elif choice == "5":
+            elif choice == "4":
                 name: str = input("Enter name to remove: ").strip()
 
                 # Error handling
@@ -126,7 +117,7 @@ class FamilySystem():
 
                 print(result)
 
-            elif choice == "6":
+            elif choice == "5":
                 old_name: str = input("Enter current name of the member: ").strip()
 
                 if not old_name:
@@ -148,7 +139,7 @@ class FamilySystem():
                 result: str = self.__inv.update_member(old_name, new_name or None, new_age)
                 print(result)
 
-            elif choice == "7":
+            elif choice == "6":
                 keyword: str = input("Enter name or part of name to search for: ").strip()
                 if not keyword:
                     print("You much enter something to search for.")
