@@ -12,7 +12,7 @@ class FamilyInventory:
             members list[MafiaMember]"""
         self.__members = []
 
-    def add_member(self, role: str, name: str, age: int): 
+    def add_member(self, role: str, name: str, age: int) -> MafiaMember:
         """Adds a new member through the inputted variable role.
         
         Args: 
@@ -42,18 +42,18 @@ class FamilyInventory:
         self.__members.append(member)
         return member
 
-    def remove_member(self, name: str): 
+    def remove_member(self, name: str) -> bool:
         """ Remove a member from the inventory through name
         returns: 
-        flag (bool): True if member was removed, False if person not found"""
+        flag bool: True - if member was removed, False - if person not found"""
         
         for member in self.__members:
-            if member.get_name().lower == name.lower():
+            if member.get_name().strip().lower() == name.lower():
                 self.__members.remove(member)
                 return True
         return False
 
-    def update_member(self, old_name, new_name=None, new_age=None): 
+    def update_member(self, old_name: str, new_name:str = None, new_age: int = None): 
         """ Update member name and/or age
         args:
             old_name (str): current name of the member to update
@@ -81,7 +81,7 @@ class FamilyInventory:
     
         return f"No member named '{old_name}' found"
 
-    def search_member(self, keyword):
+    def search_member(self, keyword: str) -> None:
         """ Search for members by keyword in their name
         args: 
             str keyword: keyword to search for
