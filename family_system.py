@@ -106,15 +106,17 @@ class FamilySystem():
             elif choice == "4":
                 name: str = input("Enter name to remove: ").strip()
 
-                # Error handling
                 if not name:
                     print("You must enter a name.")
                     continue
 
-                # This line calls logic from inventory file
-                result: str = self.__inv.remove_member(name) 
+                removed: bool = self.__inv.remove_member(name) 
 
-                print(result)
+                if removed:
+                    print(f"Member has been {name} removed.")
+                else:
+                    print(f"No member named {name} found.")
+
 
             elif choice == "5":
                 old_name: str = input("Enter current name of the member: ").strip()
