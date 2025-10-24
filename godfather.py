@@ -1,7 +1,8 @@
 from mafia_member import MafiaMember
 from consigliere import Consigliere
 from capo import Capo
-from crime import Crime, CrimeType
+from crime import Crime
+from crime_type import CrimeType
 
 
 class Godfather(MafiaMember):
