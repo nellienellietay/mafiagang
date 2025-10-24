@@ -4,7 +4,7 @@ from soldier import Soldier
 
 class Capo(MafiaMember):
     """Subclass to MafiaMember"""
-    def __init__(self, name, age):
+    def __init__(self, name: str, age: int) -> None:
         super().__init__(name=name, age=age, role="Capo")
 
     def commit_crime(self, crime: Crime) -> None:
