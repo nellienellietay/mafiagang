@@ -4,7 +4,7 @@ from crime import Crime, CrimeType
 class Soldier(MafiaMember):
     """Subclass to MafiaMember"""
     
-    def __init__(self, name: str, age: int):
+    def __init__(self, name: str, age: int) -> None:
         """Initializes Soldier with name, age and role"""
         super().__init__(name, age, "Soldier")
 
@@ -12,7 +12,7 @@ class Soldier(MafiaMember):
         """commits the crime """
         print(f"{self.get_name()} commits {crime.get_type().value}.")
 
-    def __str__(self):
+    def __str__(self) -> str:
         """Returns string representation of Soldier
         returns:
             str representation
