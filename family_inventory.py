@@ -102,7 +102,7 @@ class FamilyInventory:
         if found_members:
             for member in found_members:
                 role = member.__class__.__name__
-                print(f"Role: {role} | Name: {member.get_name()} | Age: {member.get_age()}") 
+                print(member) 
         else:
             print("No matching member found")
 
