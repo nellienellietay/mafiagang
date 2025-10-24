@@ -1,4 +1,5 @@
-from crime import Crime, CrimeType
+from crime import Crime
+from crime_type import CrimeType
 from family_inventory import FamilyInventory
 from mafia_member import MafiaMember
 
