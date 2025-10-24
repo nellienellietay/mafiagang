@@ -1,11 +1,4 @@
-from enum import Enum 
-
-class CrimeType(Enum):
-    RACKETEERING = "Racketeering"
-    EXTORTION = "Extortion"
-    BRIBERY = "Bribery"
-    SMUGGLING = "Smuggling"
-    INTIMIDATION = "Intimidation"
+from crime_type import CrimeType 
 
 class Crime:
     def __init__(self, crime_type: CrimeType, participants: list[str]): 
