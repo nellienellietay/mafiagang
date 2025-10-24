@@ -15,11 +15,11 @@ class Godfather(MafiaMember):
     def commit_crime(self, crime: Crime) -> None:
         """Godfather may handle racketeering and bribery. Others are refused."""
         if crime.get_type() == CrimeType.RACKETEERING:
-            print(f"{self.get_name()} can do some racketeering")
+            print(f"{self.get_name()} can do some racketeering and will start planning right away...")
         elif crime.get_type() == CrimeType.BRIBERY:
-            print(f"{self.get_name()} can do some bribery")
+            print(f"{self.get_name()} can do some bribery and will begin right away...")
         else:
-            print(f"{self.get_role()} {self.get_name()} does not deal with {crime.get_type().value}")
+            print(f"{self.get_role()} {self.get_name()} does not deal with petty {crime.get_type().value}")
 
     def __str__(self) -> str:
         """string rep of Godfather

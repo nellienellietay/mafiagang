@@ -19,4 +19,4 @@ class Capo(MafiaMember):
         returns:
             str representation
         """
-        return f"Capo {self.get_name()}"
+        return f"Capo, leader of soldiers, {self.get_name()}"

@@ -17,4 +17,4 @@ class Soldier(MafiaMember):
         returns:
             str representation
         """
-        return f"Soldier {self.get_name()}"
+        return f"Soldier, {self.get_name()}"
