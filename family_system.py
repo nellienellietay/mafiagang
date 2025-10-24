@@ -59,13 +59,13 @@ class FamilySystem():
                     print(e)
 
             elif choice == "2":
-                members: list[MafiaMember] = self.__inv.list_members()
+                members = self.__inv.list_members()
+
                 if not members:
                     print("No members found.")
-                    continue 
-                for m in members:
-                    print(f"{m.__class__.__name__}: {m.get_name()}, {m.get_age()} years old")
-
+                else: 
+                    for member in members:
+                        print(member)
 
             elif choice == "3":
                 print(" Do crime")

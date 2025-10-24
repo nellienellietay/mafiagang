@@ -102,14 +102,5 @@ class FamilyInventory:
             print("No matching member found")
 
     def list_members(self): 
-        """ List all members in the family inventory
-            returns: 
-                List[MafiaMember] - list of all members
-        """
-        if not self.__members:
-            print("No members in the family yet.")
-
-        for member in self.__members:
-            print(member)
-
-    
+        """Return all members in the family inventory"""
+        return list(self.__members)
