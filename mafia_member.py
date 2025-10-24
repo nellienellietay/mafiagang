@@ -4,9 +4,9 @@ from crime import Crime
 class MafiaMember(ABC): 
     def __init__(self, name: str, age: int, role: str) -> None:
         """Initializes a MafiaMember as instance"""
-        self.__name [str] = name 
-        self.__age [int] = age
-        self.__role [str] = role
+        self.__name = name 
+        self.__age = age
+        self.__role = role
 
     def get_name(self) -> str:
         """Gets name of mafia member
