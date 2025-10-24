@@ -1,5 +1,6 @@
 from mafia_member import MafiaMember
-from crime import Crime, CrimeType
+from crime import Crime
+from crime_type import CrimeType
 from soldier import Soldier
 
 class Capo(MafiaMember):
