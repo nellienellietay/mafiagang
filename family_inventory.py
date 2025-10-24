@@ -71,7 +71,6 @@ class FamilyInventory:
         
         old_name = (old_name or "").strip().lower()
 
-        # Loops through all members in a list
         for member in self.__members:
             if member.get_name().lower() == old_name:
                 updated = False
@@ -92,25 +91,25 @@ class FamilyInventory:
         """ Search for members by keyword in their name"""
 
         keyword = (keyword or "").strip().lower()
-        found_members = [] 
+        found = False
 
-        # Loop through all the members.
         for member in self.__members:
             if keyword in member.get_name().lower(): 
-                found_members.append(member)
+                print(member)
+                found = True
 
-        if found_members:
-            for member in found_members:
-                role = member.__class__.__name__
-                print(member) 
-        else:
+        if not found:
             print("No matching member found")
 
-    def list_members(self): # return list of all members
+    def list_members(self): 
         """ List all members in the family inventory
             returns: 
                 List[MafiaMember] - list of all members
         """
-        return list(self.__members)
+        if not self.__members:
+            print("No members in the family yet.")
+
+        for member in self.__members:
+            print(member)
 
     
