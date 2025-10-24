@@ -4,17 +4,27 @@ from consigliere import Consigliere
 from capo import Capo
 from soldier import Soldier
 
-"""This is the family invetory."""
+"""This is the family invetory. Handles storage and management of all MafiaMember objects in the family."""
 
 class FamilyInventory:
 
     def __init__(self): 
-        """Initialize the family inventory"""
+        """Initialize an empty inventory for mafia family members."""
 
         self.__members = [] # list to hold mafia members
 
-    def add_member(self, role: str, name: str, age: int, reports_to=None, skills=None):
-        """ Add a new member"""
+    def add_member(self, role: str, name: str, age: int): 
+
+        """Adds a new member through the inputted variable role.
+        
+        Args: 
+            role (str): role of the member
+            name (str): name of new member
+            age (int): age of new member
+
+        Returns:
+            MafiaMember: the created member instance
+        """
 
         role = (role or "").strip().lower()
 
@@ -22,41 +32,30 @@ class FamilyInventory:
         if role == "godfather":
             for member in self.__members:
                 if isinstance(member, Godfather):
-                    raise ValueError("Who are you trying to fool. There can only be one Godfather.")
-
-        if role == "godfather":
+                    raise ValueError("Who are you trying to fool? There can only be one Godfather in this family.")
             member = Godfather(name=name, age=age)
-        elif role == "consigliere":
-            member = Consigliere(name=name, age=age, reports_to=reports_to)
-        elif role == "capo":
-            member = Capo(name=name, age=age, reports_to=reports_to)
-        elif role == "soldier":
-            member = Soldier(name=name, age=age, skills=skills, reports_to=reports_to)
 
-            # If there is a capo, assign soldier to that capo
-            for m in self.__members:
-                if isinstance(m, Capo):
-                    m.add_soldier(member)
-                    break
+        elif role == "consigliere":
+            member = Consigliere(name=name, age=age)
+        elif role == "capo":
+            member = Capo(name=name, age=age)
+        elif role == "soldier":
+            member = Soldier(name=name, age=age)
+
         else:
-            raise ValueError(f"Unknown role: {role}")
+            raise ValueError(f"This '{role}' that you are talking about is unbeknown to us.")
 
         self.__members.append(member)
         return member
 
     def remove_member(self, name: str): 
-        """ Remove a member by name and return a message.
-        Error handling is done in family_system, not here"""
+        """ Remove a member from the inventory through name"""
         
         name = name.strip().lower()
 
         # Loops through all members 
         for member in self.__members:
-
-            #  Compares the names, not taking into consideration small/big letters
             if member.get_name().lower() == name: 
-
-                # Removes member from the list 
                 self.__members.remove(member)
                 return f"Member '{member.get_name()}' removed."
             
@@ -114,34 +113,4 @@ class FamilyInventory:
         """
         return list(self.__members)
 
-    def display_member_hierarchy(self):
-        """ Display the hierarchy of members in order:
-        1. Godfather, 2. Consigliere, 3. Capos, 4. Soldiers
-        """
-        if not self.__members:
-            return("No members.")
-
-        godfather = None # find and categorize members by role
-        consigliere = None # 
-        capos = []
-        soldiers = []
-
-        for member in self.__members: # 
-            role = member.__class__.__name__ 
-            if role == "Godfather" and godfather is None:
-                godfather = member
-            elif role == "Consigliere" and consigliere is None:
-                consigliere = member
-            elif role == "Capo":
-                capos.append(member) #append to capos list
-            elif role == "Soldier":
-                assigned = member.get_assigned_capo() if hasattr(member, "get_assigned_capo") else None #### review get assign capo
-                assigned_member = assigned if isinstance(assigned, MafiaMember) else None
-                soldiers.append({"soldier": member, "assigned_capo": assigned_member})
-                
-        return {
-                "godfather": [godfather] if godfather else [],
-                "consigliere": [consigliere] if consigliere else [],
-                "capos": capos,
-                "soldiers": soldiers,
-            }
+    

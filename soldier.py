@@ -11,7 +11,7 @@ class Soldier(MafiaMember):
     
     def commit_crime(self, crime: Crime) -> None:
         """commits the crime """
-        print(f"{self.get_name()} commits {crime.get_type().value}. Gah!!!!")
+        print(f"{self.get_name()} commits {crime.get_type().value}.")
 
 
     def __str__(self):
