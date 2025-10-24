@@ -7,7 +7,7 @@ from crime import Crime, CrimeType
 class Godfather(MafiaMember):
     """Subclass to MafiaMember"""
     def __init__(self, name: str, age: int) -> None:
-        """Initializes Godfather with name, age, role, capos and the consigliere"""
+        """Initializes Godfather with name, age, role"""
         super().__init__(name=name, age=age, role="Godfather")
 
     def commit_crime(self, crime: Crime) -> None:
