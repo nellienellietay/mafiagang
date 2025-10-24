@@ -3,15 +3,13 @@ from crime import Crime, CrimeType
 
 class Consigliere(MafiaMember):
     """Subclass to MafiaMember"""
-
-    def __init__(self, name: str, age: int):
+    def __init__(self, name: str, age: int) -> None:
         """Initializes a Consigliere as instance
         args:
             name (str): Name of the consigliere
             age (int): Age of the consigliere
         """
         super().__init__(name, age, role="Consigliere")            
-
 
     def commit_crime(self, crime: Crime) -> None:
         """Consigliere does not directly commit crimes, but advises on them.
@@ -36,7 +34,6 @@ class Consigliere(MafiaMember):
             print(f"{intro}{name} murmurs: 'Fear fade fast... Loyalty lasts longer.'")
         else:
             print(f"{intro}{name} calmly says: 'I have no comment on this kind of work...'")
-
 
     def __str__(self) -> str:
         """string rep of Consigliere
