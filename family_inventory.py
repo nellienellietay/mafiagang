@@ -51,16 +51,11 @@ class FamilyInventory:
     def remove_member(self, name: str): 
         """ Remove a member from the inventory through name"""
         
-        name = name.strip().lower()
-
-        # Loops through all members 
         for member in self.__members:
-            if member.get_name().lower() == name: 
+            if member.get_name().lower == name.lower():
                 self.__members.remove(member)
-                return f"Member '{member.get_name()}' removed."
-            
-        # If the loops does not find a match 
-        return f"No member named '{name}' found."
+                return True
+        return False
 
     def update_member(self, old_name, new_name=None, new_age=None): 
         """ Update member name and/or age:
