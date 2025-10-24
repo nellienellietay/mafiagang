@@ -125,7 +125,7 @@ class FamilySystem():
             elif choice == "6":
                 keyword: str = input("Enter name or part of name to search for: ").strip()
                 if not keyword:
-                    print("You much enter something to search for.")
+                    print("You must enter something to search for.")
                     continue
 
                 self.__inv.search_member(keyword)
