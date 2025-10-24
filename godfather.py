@@ -9,8 +9,6 @@ class Godfather(MafiaMember):
     def __init__(self, name: str, age: int) -> None:
         """Initializes Godfather with name, age, role, capos and the consigliere"""
         super().__init__(name=name, age=age, role="Godfather")
-        self.__capos = []
-        self.__consigliere = None
 
     def commit_crime(self, crime: Crime) -> None:
         """Godfather may handle racketeering and bribery. Others are refused."""
