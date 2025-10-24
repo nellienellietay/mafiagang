@@ -2,6 +2,7 @@ from mafia_member import MafiaMember
 from crime import Crime, CrimeType
 
 class Consigliere(MafiaMember):
+    """Subclass to MafiaMember"""
 
     def __init__(self, name: str, age: int):
         """Initializes a Consigliere as instance
@@ -9,14 +10,14 @@ class Consigliere(MafiaMember):
             name (str): Name of the consigliere
             age (int): Age of the consigliere
         """
-        # calls parent constructor to set shared attr
         super().__init__(name, age, role="Consigliere")            
 
 
     def commit_crime(self, crime: Crime) -> None:
-        """Consigliere involvment in the crime is by commenting on it
+        """Consigliere does not directly commit crimes, but advises on them.
         args: 
-            crime (Crime): The crime being committed   
+            crime (Crime): The crime being committed 
+            name (str): Name of the consigliere  
         """
         crime_type = crime.get_type()
         name = self.get_name()
@@ -38,5 +39,8 @@ class Consigliere(MafiaMember):
 
 
     def __str__(self) -> str:
-        """string description of Consigliere"""
+        """string rep of Consigliere
+        returns:
+            str representation
+        """
         return f"{self.get_role()}, {self.get_name()}, trusted advisor of the Don."
