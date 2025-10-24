@@ -68,4 +68,4 @@ class MafiaMember(ABC): #abstract class
     #ändrat från describe till str, bättre praxis, osäker om den fortfarande behöver vara abstract 
     def __str__(self) -> str:
         """Returns string representation, is overwritten when used in a subclass"""
-        pass
+        return f"{self.get_role()}: {self.get_name()}, {self.get_age()} years old"

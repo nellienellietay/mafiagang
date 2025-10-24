@@ -102,7 +102,6 @@ class FamilySystem():
                 self.__crimes.append(crime) #store the crime in the list
 
                 member.commit_crime(crime)
-                print(f"{member.get_name()} committed {crime_type.value}.")
 
             elif choice == "4":
                 name: str = input("Enter name to remove: ").strip()
